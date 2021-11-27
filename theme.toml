@@ -1,0 +1,12 @@
+name = "celadon"
+description = "A minimal theme for Zola"
+license = "MIT"
+homepage = "https://github.com/CyrusAlbright/celadon"
+min_version = "0.14.0"
+demo = ""
+
+[extra]
+
+[author]
+name = "Drew Christensen"
+homepage = "https://github.com/CyrusAlbright"

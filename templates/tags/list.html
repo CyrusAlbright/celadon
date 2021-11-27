@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="post">
+	<h2 class="post-title"><a href="{{ current_url }}">Tags</a></h2>
+	<ul class="post-tags">
+		{% for term in terms %}
+		<li><a href="{{term.permalink}}">#{{ term.name }}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="post">
+	{% block post %}
+	{{ macros::post_header(page=page) }}
+	<div class="post-content">
+		{{ page.content | safe }}
+	</div>
+	{% endblock post %}
+</div>
+{% endblock content %}

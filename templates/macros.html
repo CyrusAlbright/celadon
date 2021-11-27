@@ -1,0 +1,60 @@
+{% macro post_header(page) %}
+<div class="post-header">
+	<h2 class="post-title">
+		<a href="{{ page.permalink }}">{{ page.title }}</a>
+	</h2>
+	<div class="post-information">
+		<time datetime="{{ page.date | date() }}">
+			{{ page.date | date(format="%B %-d, %Y")}}
+		</time>
+		{% if page.taxonomies.tags %}
+		<span class="post-tags">
+			{% for tag in page.taxonomies.tags %}
+			<span class="post-tag"><a href="{{ get_taxonomy_url(kind='tags', name=tag) | safe }}">{{ tag }}</a></span>
+			{% endfor %}
+		</span>
+		{% endif %}
+	</div>
+</div>
+{% endmacro post_header %}
+
+{% macro list_pages(pages) %}
+{% for page in pages %}
+<div class="post">
+	{{ self::post_header(page=page) }}
+	{% if config.extra.slim_summary %}
+	{% if page.summary %}
+	<div class="summary">
+		{{ page.summary | safe | striptags }}
+		<a class="read-more" href="{{ page.permalink }}">&hellip;</a>
+	</div>
+	{% endif %}
+	{% elif config.extra.slim_content %}
+	<div class="content">
+
+	</div>
+	{% endif %}
+</div>
+{% endfor %}
+{% endmacro list_pages %}
+
+{% macro pagination(paginator) %}
+<div class="pagination">
+	{% if paginator.previous %}
+	<a rel="prev" href="{{paginator.previous}}" class="btn previous">Newer</a>
+	{% endif %}
+	{% if paginator.next %}
+	<a rel="next" href="{{paginator.next}}" class="btn next">Older</a>
+	{% endif %}
+</div>
+{% endmacro paginator %}
+
+{% macro footer() %}
+<div class="footer">
+	{% if config.extra.slim_footer %}
+	<p>{{ config.extra.slim_footer | safe }}</p>
+	{% else %}
+	<p>Powered by <a href="https://getzola.org">Zola</a>.</p>
+	{% endif %}
+</div>
+{% endmacro footer %}

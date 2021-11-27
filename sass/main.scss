@@ -1,0 +1,11 @@
+.post-information {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+
+	& .post-tags {
+		display: flex;
+		flex-flow: row nowrap;
+		justify-content: space-between;
+	}
+}
